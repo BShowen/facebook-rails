@@ -1,0 +1,49 @@
+# TO-DO
+
+## Model
+* user
+    * has one profile
+    * has many posts
+    * has many comments
+    * has a feed
+        * implemented as a method on a user so we can call `@user.feed` to return a list of recent posts to an authenticated user. `authenitcated_user == current_friend`
+    * has many likes
+        * so we can click on a post to see a list of users who like that post
+    * has many friend_requests
+        * has many friend_requests_sent
+        * has many friend_requests_recevied
+* post
+    * belongs to a user
+    * has many comments
+    * has many likes 
+* comment
+    * belongs to a user -> so we can see comments on a post with `@comment.author.name` etc. 
+    * belongs to a post
+* like (so a user can like someones post)
+    * belongs to a user
+    * belongs to a post
+* profile
+    * belongs to a user
+
+## Features
+* friending 
+    * have pending friend request  
+        * implimented by having it's own table with two id's: `request_sender_id` and `request_receiver_id`.
+    * have current friends 
+* authentication
+    * session handling with devise 
+    * authenticate with Omniauth to allow login with Facebook credentials 
+
+## Site
+* basic nav bar
+    * login
+    * logout
+    * users
+        * click a user to view their profile 
+            * if you're friends you can view there bio
+            * if you're not a friend all you see if their picture and friend request button
+    * friends
+        * list all of your current friends
+    * posts
+        * list all of your postings
+    

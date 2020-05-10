@@ -38,5 +38,3 @@ yarn-debug.log*
 # Ignore application configuration
 /config/application.yml
 
-#ignore readme until im ready to post it
-README.md

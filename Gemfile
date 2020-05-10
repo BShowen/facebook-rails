@@ -21,6 +21,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# Keep secrets a secret
+gem 'figaro', '~> 1.1.1'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -31,6 +33,12 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # add extra matchers
+  gem 'shoulda-matchers'
+
+  # add rspec testing
+  gem 'rspec-rails', '~> 4.0.0'
 end
 
 group :development do
@@ -41,6 +49,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
+  # Add sample data to the database
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

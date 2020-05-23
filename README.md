@@ -31,6 +31,10 @@
     * ### Associations
     * ~~belongs to a user~~ -> so we can see comments on a post with `@comment.author.name` etc. 
     * ~~belongs to a post~~
+    ### Validates
+    * has an author
+    * has a post (that it's commenting on)
+    * has a body
 * ## Like (so a user can like someones post)
     * ### Associations
     * ~~belongs to a user~~
@@ -60,4 +64,11 @@
         * list all of your current friends
     * posts
         * list all of your postings
+
+## TO-DO
+*  fix indentation in Posts spec
+* set dependent destroy on post comments (check other relationships as well) 
+* refactor rspec_models_helpers
+    * create_user should be new_valid_user
+    * new_post should be new_valid_post and should accept a user as a param to assign the post to. 
     

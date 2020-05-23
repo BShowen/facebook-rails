@@ -11,4 +11,10 @@ class User < ApplicationRecord
   has_many :likes
   has_many :friend_requests_sent, class_name: "FriendRequest", foreign_key: :sender_id
   has_many :friend_requests_received, class_name: "FriendRequest", foreign_key: :receiver_id
+
+  # if a profile exists, great. if not, create one. 
+  before_validation { |user| user.profile || user.profile = Profile.new }
+  
+
+  validates :name, :profile, presence: true
 end

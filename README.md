@@ -23,6 +23,10 @@
     * ~~belongs to a user~~
     * ~~has many comments~~
     * ~~has many likes~~
+    ### Validates
+    * ~~has a title~~
+    * ~~has a body~~
+    * ~~has an author~~
 * ## Comment
     * ### Associations
     * ~~belongs to a user~~ -> so we can see comments on a post with `@comment.author.name` etc. 

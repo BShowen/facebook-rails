@@ -6,8 +6,8 @@ RSpec.describe Comment, type: :model do
   #these are all of the helper methods that are called in the tests. 
   include RspecModelsHelper
 
-  let(:user1) { create_user(name: "user1", email: "foo@bar.com") }
-  let(:user2) { create_user(name: "user2", email: "foo@bar1.com") }
+  let(:user1) { new_valid_user(name: "user1", email: "foo@bar.com", save: true) }
+  let(:user2) { new_valid_user(name: "user2", email: "foo@bar1.com", save: true) }
   let(:post1) { user1.posts.create(title: "foo", body: "bar") }
   let(:comment) { new_valid_comment(post: post1, comment_author: user2) }
   

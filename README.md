@@ -2,7 +2,7 @@
 
 # Models
 * ## User
-    * ### Associations
+    #### Associations
     * ~~has one profile~~
     * ~~has many posts~~
     * ~~has many comments~~
@@ -13,34 +13,37 @@
     * ~~has many friend_requests~~
         * ~~has many friend_requests_sent~~
         * ~~has many friend_requests_recevied~~
-    * ### Validates 
-        * ~~name~~
-        * ~~email~~
-        * ~~password~~
-        * ~~profile~~
+    #### Validates 
+    * ~~name~~
+    * ~~email~~
+    * ~~password~~
+    * ~~profile~~
 * ## Post
-    * ### Associations
+    #### Associations
     * ~~belongs to a user~~
     * ~~has many comments~~
     * ~~has many likes~~
-    ### Validates
+    #### Validates
     * ~~has a title~~
     * ~~has a body~~
     * ~~has an author~~
 * ## Comment
-    * ### Associations
+    #### Associations
     * ~~belongs to a user~~ -> so we can see comments on a post with `@comment.author.name` etc. 
     * ~~belongs to a post~~
-    ### Validates
-    * has an author
-    * has a post (that it's commenting on)
-    * has a body
+    #### Validates
+    * ~~has an author~~
+    * ~~has a post (that it's commenting on)~~
+    * ~~has a body~~
 * ## Like (so a user can like someones post)
-    * ### Associations
+    #### Associations
     * ~~belongs to a user~~
     * ~~belongs to a post~~
+    #### validates
+    * post
+    * author 
 * ## Profile
-    * ### Associations
+    #### Associations
     * ~~belongs to a user~~
 
 # Features
@@ -68,7 +71,4 @@
 ## TO-DO
 *  fix indentation in Posts spec
 * set dependent destroy on post comments (check other relationships as well) 
-* refactor rspec_models_helpers
-    * create_user should be new_valid_user
-    * new_post should be new_valid_post and should accept a user as a param to assign the post to. 
     

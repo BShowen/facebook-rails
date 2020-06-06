@@ -6,6 +6,7 @@
     * ~~has one profile~~
     * ~~has many posts~~
     * ~~has many comments~~
+    * has many friends
     * has a feed
         * implemented as a method on a user so we can call `@user.feed` to return a list of recent posts to an authenticated user. `authenitcated_user == current_friend`
     * ~~has many likes~~

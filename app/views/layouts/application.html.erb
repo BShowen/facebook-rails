@@ -11,18 +11,20 @@
 
   <body>
 
-    <%= link_to("Sign up", new_user_registration_path) %>
-    <%= link_to("Log in", new_user_session_path ) %>
+    <%= link_to("Sign up", new_user_registration_path) unless user_signed_in?%>
+    <%= link_to("Log in", new_user_session_path ) unless user_signed_in? %>
     <%= link_to("Log out", destroy_user_session_path, method: :delete) if user_signed_in? %>
+    <%= link_to "Users", "#all_users" if user_signed_in? %>
+    <%= link_to "Friends", "#friends" if user_signed_in? %>
 
-
-
+    
+    
     <% if flash.any? %>
-      <% flash.each do |type, msg| %>
-        <p class="<%= type %>"><%= msg %></p>
-      <% end %>
+    <% flash.each do |type, msg| %>
+    <p class="<%= type %>"><%= msg %></p>
     <% end %>
-
+    <% end %>
+    
     <%= yield %>
     
   </body>

@@ -17,4 +17,8 @@ class User < ApplicationRecord
   
 
   validates :name, :profile, presence: true
+
+  # has_many :friends, class_name: "Friendship", foreign_key: :user_id
+  has_many :friendships
+  has_many :friends, through: :friendships
 end

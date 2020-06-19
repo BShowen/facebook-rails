@@ -1,2 +1,12 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>Users</h1>
+
+<ul>
+    <% @users.each do |user| %>
+        <% next if user == current_user %>
+        <li>
+            <%= user.name %>
+            <%= link_to("View Profile", user_path(user.id) ) %>
+            <%= link_to("Add Friend", friend_requests_path(id: user.id), method: :POST) %>
+        </li>
+    <% end %>
+</ul>

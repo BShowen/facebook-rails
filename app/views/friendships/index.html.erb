@@ -1,0 +1,10 @@
+<h1>Friends</h1>
+
+<ul>
+    <% @friends.each do |friend| %>
+        <li>
+            <%= link_to(friend.name, user_path(friend.id)) %>
+            <%= link_to("Unfriend", friendship_path(id: friend.id), method: :DELETE)%>
+        </li>
+    <% end %>
+</ul>

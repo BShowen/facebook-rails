@@ -1,0 +1,21 @@
+<h1>Friend Requests</h1>
+
+<h2>Requests sent</h2>
+<ul>
+    <% @friend_requests_sent.each do |request| %>
+        <li>
+            <%= request.receiver.name %>
+            <%= link_to("Remove", friend_request_path(id: request.receiver_id), method: :DELETE) %>
+        </li>
+    <% end %>
+</ul>
+
+<h2>Requests received</h2>
+<ul>
+    <% @friend_requests_received.each do |request| %>
+        <li>
+            <%= request.sender.name %>
+            <%= link_to("Approve", friendships_path(id: request.sender_id), method: :POST) %>
+        </li>
+    <% end %>
+</ul>

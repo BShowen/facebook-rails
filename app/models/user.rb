@@ -40,5 +40,12 @@ class User < ApplicationRecord
     return my_friends
   end
 
+  # check if current user is a freind of the user passed in as a parameter. 
+  def is_friend?(user_id)
+  is_friend = !!Friendship.where("user_id = ? AND friend_id = ?", self.id, user_id).or(
+                      Friendship.where("user_id = ? AND friend_id = ?", user_id, self.id)         ).take
+    return is_friend
+  end
+
 
 end

@@ -58,18 +58,26 @@
 
 ## Site
 * basic nav bar
-    * login
-    * logout
-    * users
-        * click a user to view their profile 
-            * if you're friends you can view there bio, feed, etc. 
+    * ~~login~~
+    * ~~logout~~
+    * ~~users~~
+        * ~~click a user to view their profile~~ 
+            * if you're friends you can view there posts
             * if you're not a friend all you see if their picture and friend request button
-    * friends
-        * list all of your current friends
-    * posts
-        * list all of your postings
+    * ~~friending~~
+        * ~~list all of your current friends~~
+        * ~~list all friend requests sent~~
+        * ~~list all friend requests received~~
+    * ~~posts~~
+        * ~~list all of your postings~~
+        * submit a new post
 
 ## TO-DO
 *  fix indentation in Posts spec
 * set dependent destroy on post comments (check other relationships as well) 
+* I need to create a post sumbission form
+* When viewing friends you should not see "add friend" if you are currently friends or if there is a pending friend request (both ways)
+* Users still need feed functionality. 
+    * I want to click on a user to see there profile which consists of ther picture, there posts, a button to friend/unfriend (depending on friend status). If you are not friends with this person all you can see is there name and button to add friend. 
+
     

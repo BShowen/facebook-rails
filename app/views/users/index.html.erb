@@ -6,7 +6,7 @@
         <li>
             <%= user.name %>
             <%= link_to("View Profile", user_path(user.id) ) %>
-            <%= link_to("Add Friend", friend_requests_path(id: user.id), method: :POST) %>
+            <%= link_to("Add Friend", friend_requests_path(id: user.id), method: :POST) unless current_user.is_friend?(user.id) %>
         </li>
     <% end %>
 </ul>

@@ -10,25 +10,38 @@
   </head>
 
   <body>
+    <div id="wrapper">
+      
+      <% if flash.any? %>
+          <% flash.each do |type, msg| %>
+            <p class="<%= type %>"><%= msg %></p>
+          <% end %>
+      <% end %>
 
-    <% if user_signed_in? %>
-      <%= link_to("Profile", authenticated_root_path ) %>
-      <%= link_to("Log out", destroy_user_session_path, method: :delete) %>
-      <%= link_to "Users", users_index_path %>
-      <%= link_to "Friends", "#friends" %>
-      <%= link_to "Posts", posts_path %>
-    <% else %>
-      <%= link_to("Log in", new_user_session_path ) %>
-      <%= link_to("Sign up", new_user_registration_path) %>
-    <% end %>
+      <nav>
+        <% if user_signed_in? %>
+          <%= link_to("Profile", authenticated_root_path ) %>
+          <%= link_to("Log out", destroy_user_session_path, method: :delete) %>
+          <%= link_to "Users", users_index_path %>
+          <%= link_to "Friends", "#friends" %>
+          <%= link_to "Posts", posts_path %>
+        <% else %>
+          <%= link_to("Log in", new_user_session_path ) %>
+          <%= link_to("Sign up", new_user_registration_path) %>
+        <% end %>
+      </nav>
 
-    <% if flash.any? %>
-    <% flash.each do |type, msg| %>
-    <p class="<%= type %>"><%= msg %></p>
-    <% end %>
-    <% end %>
-    
-    <%= yield %>
-    
+      <header>
+        <h1>BigBrother</h1>
+      </header>
+
+      <main>
+        <%= yield %>
+      </main>
+
+      <footer>
+        Copyright &copy; Bradley Showen
+      </footer>
+    </div>
   </body>
 </html>

@@ -20,10 +20,10 @@ class FriendRequestsController < ApplicationController
   def destroy
     friend_request = FriendRequest.where("sender_id = ? AND receiver_id = ?", current_user.id, request_params).take
     if friend_request.destroy 
-      flash[:notice] = "Friend request cancelled"
+      flash[:info] = "Friend request cancelled"
       redirect_to friend_requests_path
     else
-      flash[:notice] = "Something went wrong"
+      flash[:danger] = "Something went wrong"
       redirect_to authenticated_root
     end
   end

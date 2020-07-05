@@ -10,39 +10,38 @@
   </head>
 
   <body>
-    <div id="wrapper">
-      
-      <% if flash.any? %>
-          <% flash.each do |type, msg| %>
-            <p class="<%= type %>"><%= msg %></p>
-          <% end %>
-      <% end %>
-
-      <nav>
-        <% if user_signed_in? %>
-          <%= link_to("Home", authenticated_root_path ) %>
-          <%= link_to "Friends", friendships_path %>
-          <%= link_to "Posts", posts_path %>
-          <%= link_to "Friend Requests", friend_requests_path %>
-          <%= link_to "Users", users_path %>
-          <%= link_to("Log out", destroy_user_session_path, method: :delete) %>
-        <% else %>
-          <%= link_to("Log in", new_user_session_path ) %>
-          <%= link_to("Sign up", new_user_registration_path) %>
-        <% end %>
-      </nav>
-
       <header>
-        <h1>OdinBook</h1>
+        <h1><%= current_user ? "OdinBook | #{current_user.name.capitalize}" : "OdinBook" %></h1>
+        <nav>
+          <ul>
+            <% if user_signed_in? %>
+              <li><%= link_to("Home", authenticated_root_path ) %></li>
+              <li><%= link_to "Friends", friendships_path %></li>
+              <li><%= link_to "Posts", posts_path %></li>
+              <li><%= link_to "Requests", friend_requests_path %></li>
+              <li><%= link_to "Users", users_path %></li>
+              <li><%= link_to("Log out", destroy_user_session_path, method: :delete) %></li>
+            <% end %>
+          </ul>
+        </nav>
       </header>
+
+      <div class="alerts-container">
+        <% if flash.any? %>
+            <% flash.each do |type, msg| %>
+              <div class="<%= type %>-alert">
+                <p><%= msg %></p>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
 
       <main>
         <%= yield %>
       </main>
 
-      <footer>
+      <!-- <footer>
         Copyright &copy; Bradley Showen
-      </footer>
-    </div>
+      </footer> -->
   </body>
 </html>

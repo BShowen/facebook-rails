@@ -8,7 +8,7 @@ class FriendshipsController < ApplicationController
     friendship = current_user.friendships.build(friend_id: @friend_requestor.id)
 
     if friendship.save
-      flash[:notice] = "You are now friends with #{@friend_requestor.name}"
+      flash[:success] = "You are now friends with #{@friend_requestor.name}"
 
       # remove the old friend request from the FriendRequests relation because the users now have a Friendship.
       remove_friend_request
@@ -16,7 +16,7 @@ class FriendshipsController < ApplicationController
       #redirect back to the friend requests page.
       redirect_to friend_requests_path
     else
-      flash[:notice] = "Something went wrong"
+      flash[:danger] = "Something went wrong"
 
       # redirect to the root path.
       redirect_to authenticated_root_path
@@ -28,10 +28,10 @@ class FriendshipsController < ApplicationController
     friendship = Friendship.where("user_id = ? AND friend_id = ?", current_user.id, friend.id).or(
                           Friendship.where("user_id = ? AND friend_id = ?", friend.id, current_user.id)           ).take
     if friendship.destroy
-      flash[:notice] = "You are no longer friends with #{friend.name}"
+      flash[:info] = "You are no longer friends with #{friend.name}"
       redirect_to friendships_path
     else
-      flash[:notice] = "Something went wrong"
+      flash[:danger] = "Something went wrong"
       redirect_to authenticated_root_path
     end
   end

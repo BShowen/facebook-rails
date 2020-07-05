@@ -2,10 +2,12 @@
 
 <% if @posts.any? %>
     <% @posts.each do |post| %>
-        <p><%= post.title %></p>
-        <p><%= post.body %></p>
+        <article>
+            <h2><%= post.title.capitalize %></h2>
+            <p><%= post.body %></p>
+        </article>
     <% end %>
 <% else %>
- <p>You dont have ny posts yet.</p>
- <%= link_to "Create a post", new_post_path %> 
+    <h2>You dont have any posts yet.</h2>
+    <%= link_to "Create a post", authenticated_root_path %>
 <% end %>

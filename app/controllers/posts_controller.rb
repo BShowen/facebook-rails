@@ -11,6 +11,16 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    # Delete the post is params: :id only if the current user is the author of the post. 
+    post = Post.find_by(id: destroy_params)
+    if post.author == current_user
+      post.destroy!
+      flash[:success] = "Post deleted"
+      redirect_to posts_path
+    else
+      flash[:danger] = "Something went wrong"
+      redirect_to authenticated_root_path
+    end
   end
 
   def create
@@ -35,5 +45,9 @@ class PostsController < ApplicationController
   private
   def post_params 
     params.require(:post).permit(:title, :body)
+  end
+
+  def destroy_params
+    params.require(:id)
   end
 end

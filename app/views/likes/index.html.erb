@@ -1,0 +1,11 @@
+
+<% if @likes.any? %>
+    <h1>Users who like your post</h1>
+    <ul>
+        <% @likes.each do |like| %>
+            <li><%= like.user.name %></li>
+        <% end %>
+    </ul>
+<% else %>
+    <h1>This post doesnt have any likes.</h1>
+<% end %>

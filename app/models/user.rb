@@ -28,15 +28,12 @@ class User < ApplicationRecord
   # return all the friends for a given user. 
   def friends
     my_friends = []
-
     self.initiated_friends.each do |friend|
       my_friends << friend
     end
-
     self.inverse_friends.each do |friend|
       my_friends << friend
     end
-
     return my_friends
   end
 
@@ -47,5 +44,15 @@ class User < ApplicationRecord
     return is_friend
   end
 
+  # retrieve the 3 most recent posts from every single friend. 
+  def feed
+    feed_posts = []
+    #collect all the posts from each friend
+    self.friends.each do |friend|
+      feed_posts += friend.posts.order(created_at: :desc).take(3)
+    end
+    #sort the feed posts by created at asc
+    feed_posts.sort_by{|p| p.created_at}.reverse
+  end
 
 end

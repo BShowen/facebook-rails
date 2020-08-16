@@ -1,16 +1,16 @@
 <h1>Posts</h1>
 
 <% if @posts.any? %>
-<% @posts.each do |post| %>
-<article>
-    <h2><%= post.title.capitalize %></h2>
-    <p><%= post.body %></p>
-    <%= post_count = post.likes.count %>
-    <%= link_to("#{post_count} Like".pluralize(post.likes.count), likes_path(post_id: post.id)) %>
-    <%= link_to("Delete", post_path(id: post.id), method: :DELETE) %>
-</article>
-<% end %>
+    <% @posts.each do |post| %>
+    <article>
+        <h2><%= post.title.capitalize %></h2>
+        <p><%= post.body %></p>
+        <%= post_count = post.likes.count %>
+        <%= link_to("#{post_count} Like".pluralize(post.likes.count), likes_path(post_id: post.id)) %>
+        <%= link_to("Delete", post_path(id: post.id), method: :DELETE) %>
+    </article>
+    <% end %>
 <% else %>
-<h2>You dont have any posts yet.</h2>
-<%= link_to "Create a post", authenticated_root_path %>
+    <h2>You dont have any posts yet.</h2>
+    <%= link_to "Create a post", authenticated_root_path %>
 <% end %>

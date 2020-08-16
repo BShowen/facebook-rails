@@ -1,0 +1,16 @@
+<div class="form-container">
+    <h2>Friend Feed</h2>
+
+    <% @feed.each do |post| %>
+        <article>
+            <h2><%= post.author.name.capitalize %></h2>
+            <p><%= post.body %></p>
+            <% post_count = post.likes.count %>
+            <%= "#{post_count} Like".pluralize(post.likes.count) %>
+            <% if post.author == current_user %>
+                <%= link_to("Delete", post_path(id: post.id), method: :DELETE) %>
+            <% end %>
+            <!-- there needs to be a like button -->
+        </article>
+    <% end %>
+</div>

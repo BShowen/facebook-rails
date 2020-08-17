@@ -7,8 +7,8 @@
     * ~~has many posts~~
     * ~~has many comments~~
     * ~~has many friends~~
-    * has a feed
-        * implemented as a method on a user so we can call `@user.feed` to return a list of recent posts to an authenticated user. `authenitcated_user == current_friend`
+    * ~~has a feed~~
+        * ~~implemented as a method on a user so we can call `@user.feed` to return a list of recent posts to an authenticated user. `authenitcated_user == current_user`~~
     * ~~has many likes~~
         * so we can click on a post to see a list of users who like that post
     * ~~has many friend_requests~~
@@ -70,14 +70,14 @@
         * ~~list all friend requests received~~
     * ~~posts~~
         * ~~list all of your postings~~
-        * submit a new post
+        * ~~submit a new post~~
 
 ## TO-DO
 *  fix indentation in Posts spec
 * set dependent destroy on post comments (check other relationships as well) 
-* I need to create a post sumbission form
+* ~~I need to create a post sumbission form~~
 * When viewing friends you should not see "add friend" if you are currently friends or if there is a pending friend request (both ways)
-* Users still need feed functionality. 
+* ~~Users still need feed functionality~~
     * I want to click on a user to see there profile which consists of ther picture, there posts, a button to friend/unfriend (depending on friend status). If you are not friends with this person all you can see is there name and button to add friend. 
 
     

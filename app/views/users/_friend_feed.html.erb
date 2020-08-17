@@ -5,12 +5,21 @@
         <article>
             <h2><%= post.author.name.capitalize %></h2>
             <p><%= post.body %></p>
+            
+            <!-- like count -->
             <% post_count = post.likes.count %>
             <%= "#{post_count} Like".pluralize(post.likes.count) %>
+
+            <!-- link to see all the users who like this post -->
+            <%= link_to("See likes", likes_path(post_id: post.id)) %>
+
+            <!-- If you are the current user and wish to delete this post -->
             <% if post.author == current_user %>
                 <%= link_to("Delete", post_path(id: post.id), method: :DELETE) %>
             <% end %>
-            <!-- there needs to be a like button -->
+
+            <!-- like button -->
+            <%= link_to("Like this post", likes_path(post_id: post.id), method: :POST) %>
         </article>
     <% end %>
 </div>
